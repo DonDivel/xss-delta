@@ -26,7 +26,7 @@ function us()
 $.get( "/getusers")
   .done(function( data ) {
 	  data.forEach(function(al){
-	 $('#users').append("<tr><td>"+al.ip+"</td><td>"+al.os+"</td><td>"+al.name+"</td><td>"+al.cnt+"</td></tr>");
+	 $('#users').append("<tr><td>"+al.ip+"</td><td>"+al.os+"</td><td>"+al.name+"</td><td>"+al.cnt+"</td><td><button type="button" class="btn btn-info">Info</button></td></tr>");
 	  });
     
   });
