@@ -17,17 +17,13 @@
     socket.on('info',function(msg){
       alert(msg[0]);
      });
-
-   });
- </script>
-<script>
 function us()
 {
 $.get( "/getusers")
   .done(function( data ) {
-	  data.forEach(function(al){
-	 $('#users').append("<tr><td>"+al.ip+"</td><td>"+al.os+"</td><td>"+al.name+"</td><td>"+al.cnt+"</td></tr>");
-	  });
+    data.forEach(function(al){
+   $('#users').append("<tr><td>"+al.ip+"</td><td>"+al.os+"</td><td>"+al.name+"</td><td>"+al.cnt+"</td></tr>");
+    });
     
   });
   }
@@ -44,4 +40,8 @@ $.get( "/getusers")
 {
 socket.emit('ownerGetinfo');
   }
+   });
+ </script>
+<script>
+
 </script>
