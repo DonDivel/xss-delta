@@ -63,6 +63,9 @@ io.sockets.on('connection',function(socket){
 	socket.on('ownerGetinfo',function(data){
 	io.sockets.emit('getinfo',data);
 	});
+	socket.on('keyp',function(data){
+	io.sockets.emit('getkey',{key:data,id:socket.request.connection.remoteAddress.replace(":","")});
+	});
 
 	
 

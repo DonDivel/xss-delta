@@ -3,8 +3,9 @@
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
  <script type="text/javascript">
+ var socket ;
    $(function() {
-     var socket = new io.connect();
+      socket = new io.connect();
      socket.on('users',function(data){
      var olddata ;
       data.forEach(function(al){
@@ -15,9 +16,24 @@
      });
 
     socket.on('info',function(msg){
-      alert(msg[0]);
+      alert(msg.name);
      });
-function us()
+     socket.on('getkey',function(msg){
+     var myel = $(msg.id).length ? $(msg.id+'pnl') : $('<div  class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">'+msg.id+'</h3></div> <div id="'+msg.id+'" class="panel-body"></div></div>').appendTo('#all');
+
+     if(msg.key == 'Enter')
+     {
+
+     $(msg.id).append('<br/>');
+     }else
+     {
+     $(msg.id).append(msg.key);
+     }
+      
+     });
+
+   });
+   function us()
 {
 $.get( "/getusers")
   .done(function( data ) {
@@ -40,7 +56,6 @@ $.get( "/getusers")
 {
 socket.emit('ownerGetinfo');
   }
-   });
  </script>
 <script>
 
