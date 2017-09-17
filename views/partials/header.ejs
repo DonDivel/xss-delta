@@ -1,0 +1,29 @@
+<!-- views/partials/header.ejs -->
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <span class="glyphicon glyphicon glyphicon-tree-deciduous"></span>
+              Black Sails
+            </a>
+
+        </div>
+
+        <ul class="nav navbar-nav">
+            <li><a onclick="us()">Users</a></li>
+            <li><a onclick="op()" href="#">Options</a></li>
+
+
+        </ul>
+         <a style="margin-right: 2%;" class="navbar-text navbar-right dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+      <%= login %> <span class="caret"></span>
+    </a>
+    <ul style="left: 89%;" class="dropdown-menu navbar-right">
+      <li><a href="/">log out</a></li>
+    </ul>
+         
+    </div>
+
+</nav>

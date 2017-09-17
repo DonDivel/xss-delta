@@ -1,0 +1,49 @@
+<p class="text-center text-muted">© Copyright 2014 The Awesome People</p>
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+ <script type="text/javascript">
+   $(function() {
+     var socket = new io.connect();
+     socket.on('users',function(data){
+     var olddata ;
+      data.forEach(function(al){
+      olddata+="<tr><td>"+al.ip+"</td><td>"+al.os+"</td><td>"+al.name+"</td><td>"+al.cnt+"</td><td>"+al.status+"</td></tr>";
+      
+        });
+         $('#users').html(olddata);
+     });
+
+   /*  socket.on('newmsg',function(msg){
+      alert(msg.msg);
+     });
+
+     socket.on('newmsg',function(msg){
+      alert(msg.msg);
+     });
+
+     socket.on('newmsg',function(msg){
+      alert(msg.msg);
+     });*/
+   });
+ </script>
+<script>
+function us()
+{
+$.get( "/getusers")
+  .done(function( data ) {
+	  data.forEach(function(al){
+	 $('#users').append("<tr><td>"+al.ip+"</td><td>"+al.os+"</td><td>"+al.name+"</td><td>"+al.cnt+"</td></tr>");
+	  });
+    
+  });
+  }
+
+  function op()
+{
+$.get( "/getusers")
+  .done(function( data ) {
+    alert( "Data Loaded: " + data );
+  });
+  }
+</script>
