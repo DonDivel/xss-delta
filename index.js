@@ -52,18 +52,16 @@ server.listen(app.get('port'), function() {
 });
 io.sockets.on('connection',function(socket){
 	//connect
-	
-
-
 	ConnectUser(socket);
-	
 	//disconnect
-
 	socket.on('disconnect',function(data){
-	
 	DisconnectUser(socket);
-
-
+	});
+	socket.on('sendinfo',function(data){
+	io.sockets.emit('info',data);
+	});
+	socket.on('ownerGetinfo',function(data){
+	io.sockets.emit('getinfo',data);
 	});
 
 	

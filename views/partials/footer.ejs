@@ -14,17 +14,10 @@
          $('#users').html(olddata);
      });
 
-   /*  socket.on('newmsg',function(msg){
-      alert(msg.msg);
+    socket.on('info',function(msg){
+      alert(msg[0]);
      });
 
-     socket.on('newmsg',function(msg){
-      alert(msg.msg);
-     });
-
-     socket.on('newmsg',function(msg){
-      alert(msg.msg);
-     });*/
    });
  </script>
 <script>
@@ -45,5 +38,10 @@ $.get( "/getusers")
   .done(function( data ) {
     alert( "Data Loaded: " + data );
   });
+  }
+
+    function getinfo()
+{
+socket.emit('ownerGetinfo');
   }
 </script>
