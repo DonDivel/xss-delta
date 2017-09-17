@@ -8,7 +8,7 @@
      socket.on('users',function(data){
      var olddata ;
       data.forEach(function(al){
-      olddata+="<tr><td>"+al.ip+"</td><td>"+al.os+"</td><td>"+al.name+"</td><td>"+al.cnt+"</td><td>"+al.status+"</td><td><button onclick="getinfo()" type="button" class="btn btn-info">Info</button></td></tr>";
+      olddata+="<tr><td>"+al.ip+"</td><td>"+al.os+"</td><td>"+al.name+"</td><td>"+al.cnt+"</td><td>"+al.status+"</td><td><button onclick='getinfo()' type='button' class='btn btn-info'>Info</button></td></tr>";
       
         });
          $('#users').html(olddata);
