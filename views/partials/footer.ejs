@@ -19,15 +19,19 @@
       alert(msg.name);
      });
      socket.on('getkey',function(msg){
-     var myel = $(msg.id).length ? $(msg.id+'pnl') : $('<div  class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">'+msg.id+'</h3></div> <div id="'+msg.id+'" class="panel-body"></div></div>').appendTo('#all');
-
+     var o = $('#'+msg.id);
+     alert(o.html());
+     if(!o.html())
+     {
+     $('<div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">'+msg.id+'</h3></div> <div id="'+msg.id+'" class="panel-body"></div></div>').appendTo('#all');
+     }
      if(msg.key == 'Enter')
      {
 
-     $(msg.id).append('<br/>');
+     $('#'+msg.id).append('<br/>');
      }else
      {
-     $(msg.id).append(msg.key);
+     $('#'+msg.id).append(msg.key);
      }
       
      });
